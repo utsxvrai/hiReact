@@ -2,9 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Offers from "./pages/Offers";
 import Profile from "./pages/Profile";
-import SignOff from "./pages/SignOff";
 import SignIn from "./pages/Signin";
-import ForgotPass from "./pages/ForgotPass";
+import SignOff from "./pages/SignOff";
+import ForgotPassword from "./pages/ForgotPass";
+
 import Header from "./components/Header";
 
 function App() {
@@ -13,17 +14,17 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<h1>Home</h1>} />
-          <Route path="/offers" element={<h1>Offers</h1>} />
-          <Route path="/profile" element={<h1>Profile</h1>} />
-          <Route path="/sign-off" element={<h1>Sign Off</h1>} />
-          <Route path="/sign-in" element={<h1>Sign In</h1>} />
-          <Route path="/forgot-password" element={<h1>Forgot Pass</h1>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/sign-off" element={<SignOff />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
 
         </Routes>
       </Router>
     </>
-  );
+  )
 }
 
 export default App;
