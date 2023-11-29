@@ -9,6 +9,7 @@ export default function Signup() {
     Name : '',
     Email: '',
     Password: '',
+    // to confirm Pa
   });
     
 
