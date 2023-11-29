@@ -79,8 +79,9 @@ export default function Signup() {
                   <p className='mb-6 text-sm' > Already have account?
                   <Link to='/sign-in' className='text-red-600 text-sm hover:text-red-700 ml-2 transition duration-200 ease-in-out'>Sign In</Link>
                   </p>
+                  
                 </div>
-                <button className='bg-green-600 hover:bg-green-700 transition duration-200 ease-in-out text-white text-sm font-semibold px-8 py-2 rounded-md w-full shadow-sm hover:shadow-lg ppercase'>Register
+                <button className='bg-green-600 hover:bg-green-700 transition duration-200 ease-in-out text-white text-sm font-semibold px-8 py-2 rounded-md w-full shadow-sm hover:shadow-lg uppercase'>sign-up
             </button>
             <div className=' flex my-4 items-center 
             before:border-t before:flex-1 before:border-green-300 after:border-t after:flex-1 after:border-green-300'>

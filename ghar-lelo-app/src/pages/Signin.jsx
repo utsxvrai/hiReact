@@ -66,12 +66,12 @@ export default function SignIn() {
                 />
               )}
                 </div>
-                <div className='flex justify-between whitespace-nowrap text-sm sm:text-lg'>
+                <div className='flex  justify-between  whitespace-nowrap text-sm sm:text-lg'>
                   <p className='mb-6 text-sm' > Don't have account?
                   <Link to='/sign-up' className='text-red-600 text-sm hover:text-red-700 ml-2 transition duration-200 ease-in-out'>Register</Link>
                   </p>
-                  <p>
-                    <Link to='/forgotpassword' className='text-blue-600 text-sm hover:text-blue-800 transition duration-200 ease-in-out'>Forgot Password?</Link>
+                  <p className='mb-6 text-sm'>
+                    <Link to='/forgot-password' className='text-green-600 text-sm hover:text-green-800 transition duration-200 ease-in-out'>Forgot Password?</Link>
                   </p>
                 </div>
                 <button className='bg-green-600 hover:bg-green-700 transition duration-200 ease-in-out text-white text-sm font-semibold px-8 py-2 rounded-md w-full shadow-sm hover:shadow-lg'>SIGN IN
