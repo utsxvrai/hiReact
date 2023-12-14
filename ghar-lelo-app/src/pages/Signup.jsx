@@ -2,8 +2,10 @@ import React from 'react';
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import OAuth from '../components/OAuth';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {db} from '../firebase';
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom'; 
 
 export default function Signup() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -11,11 +13,12 @@ export default function Signup() {
     Name : '',
     Email: '',
     Password: '',
-    // to confirm Pa
+    // to confirm Password
   });
     
 
   const {Name , Email, Password } = formData;
+  const navigate = useNavigate();
 
   function onChange(e) {
     setFormData(prevState => ({
@@ -25,13 +28,23 @@ export default function Signup() {
   }
 
   async function onSubmit(e) {
-    e.preventDefault()
+    e.preventDefault() // prevents from reloading the page
 
     try{
-      const getAuth = getAuth();
-      const userCredentials = await createUserWithEmailAndPassword(getAuth, Email, Password)
+      const auth = getAuth();
+      const userCredentials = await createUserWithEmailAndPassword(auth, Email, Password)
+      updateProfile(auth.currentUser , {
+        displayName: Name
+      })
+      
       const user = userCredentials.user
-      console.log(user)
+      const formDataCopy = {...formData}
+      delete formDataCopy.Password;
+      formDataCopy.timestamp = serverTimestamp();
+
+      await setDoc(doc(db, "users" , user.uid),formDataCopy);
+      navigate('/sign-in');
+
 
     }
     catch(error){
