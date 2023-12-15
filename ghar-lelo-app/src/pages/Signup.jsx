@@ -6,6 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase
 import {db} from '../firebase';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom'; 
+import { toast } from 'react-toastify';
 
 export default function Signup() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -42,13 +43,17 @@ export default function Signup() {
       delete formDataCopy.Password;
       formDataCopy.timestamp = serverTimestamp();
 
-      await setDoc(doc(db, "users" , user.uid),formDataCopy);
-      navigate('/sign-in');
+      await setDoc(doc(db, "users" , user.uid),formDataCopy)
+      toast.success('Account created successfully!!');
+      navigate('/');
+
 
 
     }
     catch(error){
-      console.log('error')
+      toast.error(error.message);
+      
+      
     }
     
   }
