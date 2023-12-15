@@ -51,9 +51,7 @@ export default function Signup() {
 
     }
     catch(error){
-      toast.error(error.message);
-      
-      
+      toast.error("Something Went Wrong!!");
     }
     
   }
